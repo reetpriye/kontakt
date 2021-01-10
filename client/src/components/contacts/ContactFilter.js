@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useContext, Fragment } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
 import ContactContext from '../../context/contact/contactContext';
 
 const ContactFilter = () => {
   const contactContext = useContext(ContactContext);
   const text = useRef('');
 
-  const { filterContacts, clearFilter, filtered, contacts } = contactContext;
+  const { filterContacts, clearFilter, filtered } = contactContext;
 
   useEffect(() => {
     if (!filtered) text.current.value = '';

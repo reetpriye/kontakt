@@ -33,7 +33,7 @@ const ContactForm = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    if (contact.name != '')
+    if (contact.name !== '')
       current ? updateContact(contact) : addContact(contact);
     clearAll();
   };
