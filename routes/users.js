@@ -18,7 +18,7 @@ router.post(
     check(
       'password',
       'Kindly enter a password with 6 or more characters'
-    ).isLength({ min: 6 }),
+    ).isLength({ min: 6 })
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -36,7 +36,7 @@ router.post(
       user = new User({
         name: name,
         email: email,
-        password: password,
+        password: password
       });
 
       const salt = await bcrypt.genSalt(10);
@@ -47,15 +47,15 @@ router.post(
 
       const payload = {
         user: {
-          id: user.id,
-        },
+          id: user.id
+        }
       };
 
       jwt.sign(
         payload,
-        config.get('jwtSecret'),
+        process.env.jwtSecret,
         {
-          expiresIn: 3600,
+          expiresIn: 3600
         },
         (err, token) => {
           if (err) throw err;
